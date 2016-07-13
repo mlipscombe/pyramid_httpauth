@@ -127,7 +127,7 @@ class HttpDigestScheme(BaseScheme):
         if request.environ.get(_ENVKEY_VALID_RESPONSE) == response:
             return True
 
-        password = self.auth_policy.get_password(username)
+        password = self.auth_policy.get_password(username, request)
         if password is None: return False;
         pwdhash = utils.calculate_pwdhash(username, password, realm)
 

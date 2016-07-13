@@ -146,7 +146,7 @@ class HttpAuthPolicy(object):
         if username is None:
             return principals
         principals.append(username)
-        groups = self.groupfinder(username)
+        groups = self.groupfinder(username, request)
         if groups is not None:
             principals.extend(groups)
 

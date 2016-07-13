@@ -46,7 +46,7 @@ class HttpBasicScheme(BaseScheme):
     def authenticated_userid(self, request):
         username = self.unauthenticated_userid(request)
         pwd_from_request = self.get_password(request)
-        password = self.auth_policy.get_password(username)
+        password = self.auth_policy.get_password(username, request)
         if password == pwd_from_request:
             return username
         return None
